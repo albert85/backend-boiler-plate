@@ -1,3 +1,5 @@
+/* eslint-disable no-empty-function */
+/* eslint-disable no-unused-vars */
 import bcrypt from 'bcryptjs';
 
 import db from '../../db/models';
@@ -100,8 +102,8 @@ class User {
     );
   }
 
-  static async inviteMember(req, res){
-    
+  static async inviteMember(req, res) {
+
   }
 }
 
