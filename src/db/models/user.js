@@ -5,6 +5,7 @@ export default (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     address: DataTypes.STRING,
+    password: DataTypes.STRING,
   }, {});
   User.associate = (models) => {};
   return User;
