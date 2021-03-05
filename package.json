@@ -1,5 +1,5 @@
 {
-  "name": "Avro-club-management",
+  "name": "avro-club-management",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/albert85/SMS-Management-Application-API.git",
@@ -34,7 +34,7 @@
     "cross-env": "^5.2.0",
     "enzyme": "^3.9.0",
     "express": "^4.16.4",
-    "express-validator": "^5.3.1",
+    "express-validator": "^6.10.0",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
