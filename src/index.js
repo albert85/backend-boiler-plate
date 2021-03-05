@@ -1,6 +1,5 @@
 import express from 'express';
 import logger from 'morgan';
-import bodyParser from 'body-parser';
 import validator from 'express-validator';
 import path from 'path';
 import swaggerJSDoc from 'swagger-jsdoc';
@@ -33,8 +32,8 @@ const options = {
 // initialize swagger-jsdoc
 const swaggerSpec = swaggerJSDoc(options);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(validator());
 
 // serve swagger
