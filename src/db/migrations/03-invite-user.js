@@ -21,6 +21,11 @@ module.exports = {
         as: 'clubId',
       },
     },
+    isAccepted: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

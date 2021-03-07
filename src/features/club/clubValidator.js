@@ -15,6 +15,14 @@ const clubValidateBody = {
       .notEmpty()
       .withMessage('Provide a valid club address'),
   ],
+  sendInvite: [
+    check('email')
+      .trim()
+      .isEmail()
+      .withMessage('Provide a valid email address')
+      .notEmpty()
+      .withMessage('Provide a valid email address'),
+  ],
 };
 
 export default clubValidateBody;

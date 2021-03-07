@@ -21,6 +21,7 @@ export const handleResponse = (
 
 export const rolePermission = roles => async (req, res, next) => {
   const { role } = req.user;
+  console.log(role);
   const hasPermission = roles.includes(role);
   if (!hasPermission) {
     return handleResponse(

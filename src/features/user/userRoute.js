@@ -5,7 +5,7 @@ import { validate } from '../helpers/handleResponse';
 
 const router = express.Router();
 
-router.post('/login', userValidateBody.loginUser, validate, User.signin);
+router.post('/login/:clubId', userValidateBody.loginUser, validate, User.signin);
 router.post('/signup', User.signup);
 
 export default router;

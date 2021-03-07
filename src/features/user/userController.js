@@ -81,11 +81,24 @@ class User {
     const verifyPassword = await bcrypt.compare(password, user.password);
 
     if (verifyPassword) {
+      const clubMember = await db.ClubMember.findOne({
+        where: {
+          clubId: req.params.clubId,
+          userId: user.id,
+        },
+      });
+
+
+      if (!clubMember) {
+        return handleResponse(res, 404, false, 'You are not a member/admin of the club');
+      }
+
       const token = ValidateToken.generateToken(
         {
           id: user.id,
           email: user.email,
           name: user.name,
+          role: clubMember.role,
         },
         eightWeeks,
       );
