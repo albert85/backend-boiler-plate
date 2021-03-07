@@ -1,5 +1,10 @@
+/* eslint-disable consistent-return */
 import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
+
+export const ADMIN = 'admin';
+export const MANAGER = 'manager';
+export const MEMBER = 'member';
 
 export const handleResponse = (
   res,
@@ -12,6 +17,21 @@ export const handleResponse = (
   message,
   data,
 });
+
+
+export const rolePermission = roles => async (req, res, next) => {
+  const { role } = req.user;
+  const hasPermission = roles.includes(role);
+  if (!hasPermission) {
+    return handleResponse(
+      res,
+      401,
+      'Failed',
+      'You do not have the required permission',
+    );
+  }
+  next();
+};
 
 export const catchErrors = action => async (req, res) => {
   try {

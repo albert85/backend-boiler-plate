@@ -16,6 +16,11 @@ module.exports = {
       allowNull: false,
       unique: true,
     },
+    sex: {
+      type: Sequelize.ENUM,
+      allowNull: false,
+      values: ['male', 'female'],
+    },
     address: {
       type: Sequelize.STRING,
       allowNull: false,

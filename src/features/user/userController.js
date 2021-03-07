@@ -91,6 +91,11 @@ class User {
       );
       return handleResponse(res, 200, 'Success', 'Login successfully', {
         token,
+        user: {
+          name: user.name,
+          address: user.address,
+          email: user.email,
+        },
       });
     }
     return handleResponse(
@@ -100,10 +105,6 @@ class User {
       'Email or password incorrect',
       {},
     );
-  }
-
-  static async inviteMember(req, res) {
-
   }
 }
 

@@ -1,12 +1,20 @@
-import { check, param } from 'express-validator';
+import { check } from 'express-validator';
 
-const validateBody = {
+const clubValidateBody = {
   createClub: [
-    param('feedId').isInt().trim()
-      .withMessage('Provide a valid request Id'),
-    check('price').isInt().trim()
-      .withMessage('Provide a valid price and must be an integer'),
+    check('name')
+      .trim()
+      .isString()
+      .withMessage('Provide a valid club name')
+      .notEmpty()
+      .withMessage('Provide a valid club name'),
+    check('address')
+      .trim()
+      .isString()
+      .withMessage('Provide a valid club address')
+      .notEmpty()
+      .withMessage('Provide a valid club address'),
   ],
 };
 
-export default validateBody;
+export default clubValidateBody;

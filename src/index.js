@@ -1,9 +1,13 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
 import logger from 'morgan';
-import validator from 'express-validator';
+import dotenv from 'dotenv';
 import path from 'path';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express';
+import route from './features/route';
+
+dotenv.config();
 
 const app = express();
 
@@ -34,7 +38,6 @@ const swaggerSpec = swaggerJSDoc(options);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(validator());
 
 // serve swagger
 app.get('/swagger.json', (req, res) => {
@@ -44,12 +47,8 @@ app.get('/swagger.json', (req, res) => {
 
 app.use('/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(swaggerSpec));
 
-const router = express.Router();
-
-router.get('/get', (req, res) => res.send('Hi welcome to a worker server'));
-
 // import routes into application
-app.use(router);
+app.use(route);
 
 const port = parseInt(process.env.PORT, 10) || 4000;
 app.set('port', port);
